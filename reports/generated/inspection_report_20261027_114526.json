@@ -1,0 +1,40 @@
+{
+  "decision": "MANUAL REVIEW REQUIRED",
+  "rationale": "Degraded image quality (blur/lighting) impedes automated confidence.",
+  "image_score": 1.0,
+  "threshold": 0.5,
+  "latency_ms": 119.78780000026745,
+  "bounding_boxes": [
+    {
+      "box": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "confidence": 1.0,
+      "class_name": "anomaly",
+      "area": 65536
+    }
+  ],
+  "quality_report": {
+    "sharpness": 444.5068359375,
+    "mean_brightness": 3.75091552734375,
+    "contrast": 30.698763691383206,
+    "warnings": [
+      "Image may be underexposed (brightness 3.8 < 25.0)"
+    ],
+    "is_acceptable": false
+  },
+  "scoring_metrics": {
+    "max_score": 1.0,
+    "percentile_score": 1.0,
+    "mean_score": 1.0,
+    "anomalous_pixel_ratio": 1.0,
+    "anomalous_pixel_count": 65536,
+    "largest_component_area": 65536,
+    "num_components": 1,
+    "binary_mask": "[[255 255 255 ... 255 255 255]\n [255 255 255 ... 255 255 255]\n [255 255 255 ... 255 255 255]\n ...\n [255 255 255 ... 255 255 255]\n [255 255 255 ... 255 255 255]\n [255 255 255 ... 255 255 255]]"
+  },
+  "model_type": "patchcore"
+}

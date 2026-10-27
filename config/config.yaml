@@ -1,0 +1,88 @@
+# Automated Industrial Surface Defect Detection - Global Configuration
+
+project:
+  name: "Automated Industrial Surface Defect Detection"
+  version: "1.0.0"
+  random_seed: 42
+  logging_level: "INFO"
+
+paths:
+  dataset_root: "data/mvtec_anomaly_detection"
+  database_path: "artifacts/inspection_history.db"
+  artifacts_dir: "artifacts"
+  checkpoints_dir: "artifacts/checkpoints"
+  anomaly_maps_dir: "artifacts/anomaly_maps"
+  predictions_dir: "artifacts/predictions"
+  experiments_dir: "artifacts/experiments"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"
+  metrics_dir: "reports/metrics"
+  generated_dir: "reports/generated"
+
+hardware:
+  device: "auto" # "auto", "cpu", or "cuda"
+  num_workers: 0
+
+dataset:
+  default_category: "bottle"
+  image_size: [256, 256]
+  supported_extensions: [".png", ".jpg", ".jpeg", ".bmp", ".tiff"]
+
+models:
+  default_model: "patchcore"
+
+  patchcore:
+    backbone: "resnet18" # "resnet18" or "wide_resnet50_2"
+    layers: ["layer2", "layer3"]
+    coreset_ratio: 0.10
+    n_neighbors: 9
+    anomaly_threshold: 0.5
+    normalize_scores: true
+
+  cnn_classifier:
+    backbone: "resnet18"
+    num_classes: 2
+    pretrained: true
+    learning_rate: 0.001
+    batch_size: 16
+    epochs: 15
+    weight_decay: 0.0001
+
+  yolo_detector:
+    base_model: "yolov8n.pt"
+    image_size: 256
+    confidence_threshold: 0.25
+    iou_threshold: 0.45
+    epochs: 20
+    batch_size: 16
+
+calibration:
+  target_fpr: 0.05 # 5% target false alarm rate on validation normal images
+  calibration_method: "quantile" # "quantile" or "fixed"
+  default_fixed_threshold: 0.5
+
+false_alarm_reduction:
+  enabled: true
+  min_component_area: 50 # Minimum pixel count for defect component
+  morphological_kernel: 3
+  gaussian_blur_kernel: 5
+  gaussian_blur_sigma: 1.5
+  use_quality_filtering: true
+  quality_checks:
+    blur_threshold: 40.0 # Laplacian variance threshold
+    min_brightness: 25.0
+    max_brightness: 240.0
+    min_contrast: 20.0
+
+inspection_decisions:
+  # Margin around threshold for borderline / manual review cases
+  uncertainty_margin: 0.08
+  categories:
+    normal: "NORMAL"
+    defect: "DEFECT DETECTED"
+    unknown_defect: "POSSIBLE UNKNOWN DEFECT"
+    manual_review: "MANUAL REVIEW REQUIRED"
+
+webcam:
+  inference_interval: 0.5 # Seconds between frame inspections
+  camera_index: 0

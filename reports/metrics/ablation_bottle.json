@@ -1,0 +1,57 @@
+[
+  {
+    "Configuration": "1_Raw_Baseline",
+    "Threshold": 0.5,
+    "Image_ROC_AUC": 1.0,
+    "Image_F1": 1.0,
+    "Image_FPR": 0.0,
+    "Image_FNR": 0.0,
+    "Pixel_ROC_AUC": 0.971044553630096,
+    "Pixel_IoU": 0.42637875590221497,
+    "Pixel_PRO": 1.0
+  },
+  {
+    "Configuration": "2_Threshold_Calibrated",
+    "Threshold": 1.0,
+    "Image_ROC_AUC": 1.0,
+    "Image_F1": 1.0,
+    "Image_FPR": 0.0,
+    "Image_FNR": 0.0,
+    "Pixel_ROC_AUC": 0.971044553630096,
+    "Pixel_IoU": 0.4383971619906917,
+    "Pixel_PRO": 1.0
+  },
+  {
+    "Configuration": "3_Component_Area_Filtered",
+    "Threshold": 0.5,
+    "Image_ROC_AUC": 1.0,
+    "Image_F1": 1.0,
+    "Image_FPR": 0.0,
+    "Image_FNR": 0.0,
+    "Pixel_ROC_AUC": 0.971044553630096,
+    "Pixel_IoU": 0.42637875590221497,
+    "Pixel_PRO": 1.0
+  },
+  {
+    "Configuration": "4_Gaussian_Smoothed",
+    "Threshold": 0.5,
+    "Image_ROC_AUC": 1.0,
+    "Image_F1": 1.0,
+    "Image_FPR": 0.0,
+    "Image_FNR": 0.0,
+    "Pixel_ROC_AUC": 0.97445251895221,
+    "Pixel_IoU": 0.42637055471173524,
+    "Pixel_PRO": 1.0
+  },
+  {
+    "Configuration": "5_Full_False_Alarm_Pipeline",
+    "Threshold": 1.0,
+    "Image_ROC_AUC": 1.0,
+    "Image_F1": 1.0,
+    "Image_FPR": 0.0,
+    "Image_FNR": 0.0,
+    "Pixel_ROC_AUC": 0.97445251895221,
+    "Pixel_IoU": 0.4430602035713602,
+    "Pixel_PRO": 1.0
+  }
+]
